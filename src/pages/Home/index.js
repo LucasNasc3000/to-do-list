@@ -3,17 +3,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { FaSearch, FaArrowAltCircleLeft } from "react-icons/fa";
+import { Url } from "../../config/url";
 import { Container } from "../../styles/GlobalStyles";
 import TaskRender from "../TaskRender/index";
-import {
-  TaskView,
-  TaskInput,
-  HomeView,
-  LinkButtons,
-  SearchBar,
-} from "./styled";
+import { TaskView, HomeView, SearchBar } from "./styled";
 // import history from "../../services/history";
 
 export default function Home() {
@@ -21,16 +15,13 @@ export default function Home() {
   const [getData, setGetData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState("");
-  const [task, setTask] = useState("");
-  const [urlid, setUrlid] = useState(0);
+  const methods = ["create", "read", "update", "search"];
   const input = document.querySelector(".taskInput");
   const searchInput = document.querySelector(".search");
   const specialsRegex = /^(?:[a-zA-Z0-9._])/;
 
   function Clean() {
     setSearchValue("");
-    setUrlid(0);
-    setTask("");
     input.value = "";
   }
 
@@ -42,38 +33,15 @@ export default function Home() {
     searchInput.value = "";
   }
 
-  async function AddNewTask(e) {
-    e.preventDefault();
-    const formData = new FormData();
-
-    if (task === "") {
-      formData.append("task", input.value);
-
-      await fetch("http://localhost/lista-de-tarefas-api/new-task.php", {
-        method: "POST",
-        body: formData,
-      }).catch((error) => console.log(error));
-      Clean();
-    } else {
-      formData.append("urlid", urlid);
-      formData.append("task", input.value);
-
-      await fetch("http://localhost/lista-de-tarefas-api/task-update.php", {
-        method: "POST",
-        body: formData,
-      }).catch((error) => console.log(error));
-      Clean();
-    }
-  }
-
   async function Search(e) {
     e.preventDefault();
 
     if (specialsRegex.test(searchValue)) {
       const formData = new FormData();
+      formData.append("dboperation", methods[3]);
       formData.append("searchValue", searchValue);
 
-      await fetch("http://localhost/lista-de-tarefas-api/task-search.php", {
+      await fetch(Url, {
         method: "POST",
         body: formData,
       })
@@ -98,8 +66,11 @@ export default function Home() {
 
   useEffect(() => {
     async function getAllData() {
-      await fetch("http://localhost/lista-de-tarefas-api/task-list.php", {
-        method: "GET",
+      const formData = new FormData();
+      formData.append("dboperation", methods[1]);
+      await fetch(Url, {
+        method: "POST",
+        body: formData,
       })
         .then((response) => response.json())
         .then(function (data) {
@@ -123,7 +94,17 @@ export default function Home() {
           Search(e);
         }
       });
+    } else {
+      InitialState();
     }
+  });
+
+  useEffect(() => {
+    searchInput.addEventListener("change", (e) => {
+      if (e.keyCode === 13) {
+        InitialState(e);
+      }
+    });
   });
 
   return (
@@ -158,16 +139,6 @@ export default function Home() {
             <TaskRender taskSearch={searchResult} />
           )}
         </TaskView>
-        <TaskInput>
-          <input type="text" className="taskInput" />
-          <button
-            type="button"
-            className="taskSave"
-            onClick={(e) => AddNewTask(e)}
-          >
-            Salvar
-          </button>
-        </TaskInput>
       </HomeView>
     </Container>
   );

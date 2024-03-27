@@ -6,10 +6,9 @@ export const HomeView = styled.div``;
 
 export const TaskView = styled.div`
   position: relative;
-  max-height: 350px;
-  top: -20px;
+  max-height: 530px;
+  top: -60px;
   word-break: normal;
-  overflow: auto;
   border-bottom: 2px solid black;
 
   .mainDataDiv {
@@ -86,9 +85,14 @@ export const LinkButtons = styled.div`
 `;
 
 export const SearchBar = styled.div`
-  position: relative;
-  bottom: 100px;
-  right: -270px;
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  margin-top: -30px;
+  margin-left: -0px;
+  width: 725px;
+  height: 90px;
+  background-color: #fff;
 
   .search {
     display: flex;
@@ -96,9 +100,10 @@ export const SearchBar = styled.div`
     border-left: none;
     border-top: none;
     border-bottom: 1px solid black;
-    width: 350px;
-    margin-left: -100px;
-    margin-top: -80px;
+    width: 300px;
+    height: 35px;
+    margin-left: 110px;
+    margin-top: 30px;
     justify-content: center;
     align-items: center;
   }
@@ -108,8 +113,8 @@ export const SearchBar = styled.div`
     position: relative;
     width: 40px;
     height: 40px;
-    right: 150px;
-    top: -50px;
+    left: 108px;
+    top: 28px;
   }
 
   .icon {
@@ -118,13 +123,17 @@ export const SearchBar = styled.div`
     right: 10px;
   }
 
+  .icon:hover {
+    filter: brightness(75%);
+  }
+
   .back {
     display: flex;
     position: relative;
     height: fit-content;
     width: fit-content;
-    right: 300px;
-    top: 0px;
+    left: 7px;
+    top: 25px;
   }
 
   .backIcon {
@@ -132,11 +141,15 @@ export const SearchBar = styled.div`
     color: ${colors.buttonsColor};
     justify-content: center;
   }
+
+  .backIcon:hover {
+    filter: brightness(75%);
+  }
 `;
 
 export const TaskInput = styled.div`
   display: flex;
-  margin-top: 195px;
+  margin-top: 110px;
   margin-left: 140px;
   height: 120px;
   width: 380px;
@@ -166,5 +179,9 @@ export const TaskInput = styled.div`
     color: black;
     font-size: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .taskSave:hover {
+    filter: brightness(75%);
   }
 `;

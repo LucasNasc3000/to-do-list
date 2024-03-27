@@ -1,44 +1,76 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { FaEdit } from "react-icons/fa";
-import { Container } from "../../styles/GlobalStyles";
-import { HomeView, TaskInput, TaskView } from "../Home/styled";
+import { Url } from "../../config/url";
+import { TaskRenderView, TRContainer } from "./styled";
+import { TaskInput } from "../Home/styled";
 
 export default function TaskRender({ tasks, taskSearch }) {
-  const [searchValue, setSearchValue] = useState("");
-  const [searchResult, setSearchResult] = useState("");
+  const [task, setTask] = useState("");
+  const [urlid, setUrlid] = useState(0);
+  const input = document.querySelector(".taskInput");
+  const methods = ["create", "read", "update", "search"];
+  // const count = 0;
 
   function Clean() {
-    setSearchValue("");
+    setUrlid(0);
+    setTask("");
+    input.value = "";
   }
 
-  // function GetTask(e, taskParam, id) {
-  //   e.preventDefault();
+  function GetTask(e, taskParam, id) {
+    e.preventDefault();
 
-  //   if (task !== "" && urlid !== "") Clean();
+    if (task !== "" && urlid !== "") Clean();
 
-  //   setTask(taskParam);
-  //   setUrlid(id);
-  //   input.value = task;
-  // }
+    setTask(taskParam);
+    setUrlid(id);
+    input.value = task;
+  }
+
+  async function AddNewTask(e) {
+    e.preventDefault();
+    const formData = new FormData();
+
+    if (task === "") {
+      formData.append("dboperation", methods[0]);
+      formData.append("task", input.value);
+
+      await fetch(Url, {
+        method: "POST",
+        body: formData,
+      }).catch((error) => console.log(error));
+      Clean();
+    } else {
+      formData.append("dboperation", methods[2]);
+      formData.append("urlid", urlid);
+      formData.append("task", input.value);
+
+      await fetch(Url, {
+        method: "POST",
+        body: formData,
+      }).catch((error) => console.log(error));
+      Clean();
+    }
+  }
 
   return (
-    <Container>
-      <TaskView>
+    <TRContainer>
+      <TaskRenderView>
         {tasks !== ""
           ? tasks.map((alldata) => {
               return (
                 <div className="mainDataDiv">
                   <input type="checkbox" className="finish" />
                   <div className="taskBody">{alldata.task}</div>
-                  <button
-                    type="button"
-                    className="edit"
-                    onClick={(e) => GetTask(e, alldata.task, alldata.idtask)}
-                  >
-                    <FaEdit size={28} color="blue" />
+                  <button type="button" className="edit">
+                    <FaEdit
+                      size={28}
+                      color="blue"
+                      onClick={(e) => GetTask(e, alldata.task, alldata.idtask)}
+                    />
                   </button>
                 </div>
               );
@@ -58,8 +90,18 @@ export default function TaskRender({ tasks, taskSearch }) {
                 </div>
               );
             })}
-      </TaskView>
-    </Container>
+      </TaskRenderView>
+      <TaskInput>
+        <input type="text" className="taskInput" />
+        <button
+          type="button"
+          className="taskSave"
+          onClick={(e) => AddNewTask(e)}
+        >
+          Salvar
+        </button>
+      </TaskInput>
+    </TRContainer>
   );
 }
 

@@ -29,10 +29,6 @@ export default createGlobalStyle`
     font-weight: 700;
   }
 
-  button:hover {
-    filter: brightness(75%);
-  }
-
   a {
     text-decoration: none;
     color: ${colors.primaryColor};
@@ -44,12 +40,13 @@ export default createGlobalStyle`
 `;
 
 export const Container = styled.section`
-  max-width: 800px;
-  height: 650px;
+  max-width: 785px;
+  height: 700px;
+  overflow: hidden;
   background: #fff;
   margin: 30px auto;
-  margin-top: 90px;
+  margin-top: 0px;
   padding: 30px;
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 `;
