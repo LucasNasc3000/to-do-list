@@ -94,17 +94,7 @@ export default function Home() {
           Search(e);
         }
       });
-    } else {
-      InitialState();
     }
-  });
-
-  useEffect(() => {
-    searchInput.addEventListener("change", (e) => {
-      if (e.keyCode === 13) {
-        InitialState(e);
-      }
-    });
   });
 
   return (

@@ -58,32 +58,6 @@ export const TaskView = styled.div`
   }
 `;
 
-export const LinkButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  top: 140px;
-  justify-content: center;
-  align-items: center;
-
-  .finished {
-    display: flex;
-    background-color: #417cea;
-    margin: 30px;
-    height: 70px;
-    width: 180px;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 18px;
-    border-radius: 4px;
-  }
-
-  .finished:hover {
-    filter: brightness(75%);
-  }
-`;
-
 export const SearchBar = styled.div`
   display: flex;
   position: absolute;
@@ -150,9 +124,9 @@ export const SearchBar = styled.div`
 export const TaskInput = styled.div`
   display: flex;
   margin-top: 110px;
-  margin-left: 140px;
+  margin-left: 100px;
   height: 120px;
-  width: 380px;
+  width: 480px;
   border-radius: 5px;
 
   .div {
@@ -166,13 +140,17 @@ export const TaskInput = styled.div`
     width: 250px;
     top: 50px;
     left: 10px;
-    font-size: 20px;
+    font-size: 15px;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-bottom: 1px solid black;
   }
 
   .taskSave {
     position: relative;
     height: 40px;
-    width: 100px;
+    width: 80px;
     left: 30px;
     top: 50px;
     background-color: #fff;
@@ -182,6 +160,27 @@ export const TaskInput = styled.div`
   }
 
   .taskSave:hover {
+    filter: brightness(75%);
+  }
+
+  .finished {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    top: 50px;
+    left: 50px;
+    height: 40px;
+    width: 150px;
+    color: black;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .finished:hover {
     filter: brightness(75%);
   }
 `;

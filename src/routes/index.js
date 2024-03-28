@@ -3,7 +3,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Home from "../pages/Home";
-import TaskSearch from "../pages/TaskSearch";
+import FinishedTasks from "../pages/FinishedTasks";
 import Page404 from "../pages/Page404";
 
 // O switch faz com que somente uma rota seja chamada por vez
@@ -13,7 +13,7 @@ export default function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/search/:task" component={TaskSearch} />
+      <Route exact path="/finished-tasks" component={FinishedTasks} />
       <Route path="*" component={Page404} />
     </Switch>
   );

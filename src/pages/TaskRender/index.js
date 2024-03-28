@@ -2,6 +2,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { FaEdit } from "react-icons/fa";
 import { Url } from "../../config/url";
 import { TaskRenderView, TRContainer } from "./styled";
@@ -92,7 +93,7 @@ export default function TaskRender({ tasks, taskSearch }) {
             })}
       </TaskRenderView>
       <TaskInput>
-        <input type="text" className="taskInput" />
+        <input type="text" className="taskInput" placeholder="Nova tarefa..." />
         <button
           type="button"
           className="taskSave"
@@ -100,6 +101,9 @@ export default function TaskRender({ tasks, taskSearch }) {
         >
           Salvar
         </button>
+        <Link to="finished-tasks" className="finished">
+          Tarefas Concluídas
+        </Link>
       </TaskInput>
     </TRContainer>
   );
