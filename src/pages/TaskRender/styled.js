@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import * as colors from "../../config/colors";
 
 export const TRContainer = styled.div`
-  background-color: #fff;
+  background-color: ${colors.primaryColor};
   max-width: 785px;
   height: 700px;
   overflow: hidden;
@@ -30,7 +31,7 @@ export const TaskRenderView = styled.div`
     border-bottom: 0.5px solid grey;
   }
 
-  input[type="checkbox"] {
+  /* input[type="checkbox"] {
     position: relative;
     height: 50px;
     width: 50px;
@@ -38,7 +39,7 @@ export const TaskRenderView = styled.div`
     margin-right: 10px;
     margin-bottom: 20px;
     top: 10px;
-  }
+  } */
 
   .edit {
     display: flex;
@@ -65,5 +66,13 @@ export const TaskRenderView = styled.div`
     justify-content: left;
     margin-bottom: 20px;
     right: -70px;
+  }
+
+  .finish {
+    display: flex;
+    height: 50px;
+    width: 80px;
+    background-color: green;
+    color: black;
   }
 `;

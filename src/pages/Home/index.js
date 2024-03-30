@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-extraneous-dependencies */
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import React, { useEffect, useState } from "react";
 import { FaSearch, FaArrowAltCircleLeft } from "react-icons/fa";
 import { Url } from "../../config/url";

@@ -20,7 +20,7 @@ export const TaskView = styled.div`
     border-bottom: 0.5px solid grey;
   }
 
-  input[type="checkbox"] {
+  /* input[type="checkbox"] {
     position: relative;
     height: 50px;
     width: 50px;
@@ -28,7 +28,7 @@ export const TaskView = styled.div`
     margin-right: 10px;
     margin-bottom: 20px;
     top: 10px;
-  }
+  } */
 
   .edit {
     display: flex;
@@ -66,7 +66,7 @@ export const SearchBar = styled.div`
   margin-left: -0px;
   width: 725px;
   height: 90px;
-  background-color: #fff;
+  background-color: ${colors.primaryColor};
 
   .search {
     display: flex;
@@ -153,7 +153,7 @@ export const TaskInput = styled.div`
     width: 80px;
     left: 30px;
     top: 50px;
-    background-color: #fff;
+    background-color: ${colors.primaryColor};
     color: black;
     font-size: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -166,7 +166,7 @@ export const TaskInput = styled.div`
   .finished {
     display: flex;
     position: relative;
-    background-color: #fff;
+    background-color: ${colors.primaryColor};
     top: 50px;
     left: 50px;
     height: 40px;

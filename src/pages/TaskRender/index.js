@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaCheckCircle } from "react-icons/fa";
 import { Url } from "../../config/url";
 import { TaskRenderView, TRContainer } from "./styled";
 import { TaskInput } from "../Home/styled";
@@ -12,13 +12,34 @@ export default function TaskRender({ tasks, taskSearch }) {
   const [task, setTask] = useState("");
   const [urlid, setUrlid] = useState(0);
   const input = document.querySelector(".taskInput");
-  const methods = ["create", "read", "update", "search"];
+  const taskBody = document.querySelector(".taskBody");
+  const finish = document.querySelector(".finish");
+  const methods = ["create", "read", "update", "search", "finish"];
   // const count = 0;
 
   function Clean() {
     setUrlid(0);
     setTask("");
     input.value = "";
+  }
+
+  async function Finish(e, id) {
+    e.preventDefault();
+    console.log(id);
+
+    setUrlid(id);
+    const formData = new FormData();
+
+    formData.append("dboperation", methods[4]);
+    formData.append("urlid", input.value);
+
+    await fetch(Url, {
+      method: "POST",
+      body: formData,
+    }).catch((error) => console.log(error));
+
+    taskBody.classList.remove("taskBody");
+    Clean();
   }
 
   function GetTask(e, taskParam, id) {
@@ -64,7 +85,13 @@ export default function TaskRender({ tasks, taskSearch }) {
           ? tasks.map((alldata) => {
               return (
                 <div className="mainDataDiv">
-                  <input type="checkbox" className="finish" />
+                  <button
+                    type="button"
+                    className="finish"
+                    onClick={(e) => Finish(e)}
+                  >
+                    <FaCheckCircle size={30} />
+                  </button>
                   <div className="taskBody">{alldata.task}</div>
                   <button type="button" className="edit">
                     <FaEdit
