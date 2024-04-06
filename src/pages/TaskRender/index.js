@@ -31,14 +31,14 @@ export default function TaskRender({ tasks, taskSearch }) {
     const formData = new FormData();
 
     formData.append("dboperation", methods[4]);
-    formData.append("urlid", input.value);
+    formData.append("urlid", id);
 
     await fetch(Url, {
       method: "POST",
       body: formData,
     }).catch((error) => console.log(error));
 
-    taskBody.classList.remove("taskBody");
+    e.currentTarget.remove();
     Clean();
   }
 
@@ -88,7 +88,7 @@ export default function TaskRender({ tasks, taskSearch }) {
                   <button
                     type="button"
                     className="finish"
-                    onClick={(e) => Finish(e)}
+                    onClick={(e) => Finish(e, alldata.idtask)}
                   >
                     <FaCheckCircle size={30} />
                   </button>
