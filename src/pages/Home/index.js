@@ -39,6 +39,7 @@ export default function Home() {
       const formData = new FormData();
       formData.append("dboperation", methods[3]);
       formData.append("searchValue", searchValue);
+      formData.append("table", "task_list");
 
       await fetch(Url, {
         method: "POST",
@@ -67,6 +68,7 @@ export default function Home() {
     async function getAllData() {
       const formData = new FormData();
       formData.append("dboperation", methods[1]);
+      formData.append("table", "task_list");
       await fetch(Url, {
         method: "POST",
         body: formData,
