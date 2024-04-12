@@ -5,6 +5,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom";
 import { Url } from "../../config/url";
 import { Container } from "../../styles/GlobalStyles";
 import { FinishedTasksView, FinishedTaskInput } from "./styled";
+import history from "../../services/history";
 
 export default function FinishedTasks() {
   const [rawData, setRawData] = useState([]);
@@ -69,6 +70,24 @@ export default function FinishedTasks() {
     }).catch((error) => console.log(error));
   }
 
+  async function AddNewTask(e) {
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("dboperation", methods[0]);
+    formData.append("task", input.value);
+    formData.append("table", "task_list");
+
+    await fetch(Url, {
+      method: "POST",
+      body: formData,
+    }).catch((error) => console.log(error));
+
+    Clean();
+    Delete(e, urlid);
+    history.push("/");
+  }
+
   return (
     <Container>
       <FinishedTasksView>
@@ -96,7 +115,11 @@ export default function FinishedTasks() {
       </FinishedTasksView>
       <FinishedTaskInput>
         <input type="text" className="taskInput" placeholder="Nova tarefa..." />
-        <button type="button" className="taskSave">
+        <button
+          type="button"
+          className="taskSave"
+          onClick={(e) => AddNewTask(e)}
+        >
           Salvar
         </button>
         <Link to="/" className="toHome">
