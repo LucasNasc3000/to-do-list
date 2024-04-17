@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from "react";
@@ -163,6 +162,11 @@ export default function TaskRender({ tasks, taskSearch }) {
     </TRContainer>
   );
 }
+
+TaskRender.defaultProps = {
+  tasks: "",
+  taskSearch: "",
+};
 
 TaskRender.propTypes = {
   tasks: PropTypes.object,
