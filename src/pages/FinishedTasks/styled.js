@@ -4,7 +4,8 @@ import * as colors from "../../config/colors";
 export const FinishedTasksView = styled.div`
   display: flex;
   flex-direction: column;
-  height: 530px;
+  height: 490px;
+  margin-top: 70px;
   background-color: ${colors.primaryColor};
   word-break: normal;
   overflow: auto;
@@ -59,7 +60,7 @@ export const FinishedTasksView = styled.div`
 `;
 
 export const FinishedTaskInput = styled.div`
-  margin-top: 30px;
+  margin-top: 15px;
   height: 90px;
 
   .toHome {

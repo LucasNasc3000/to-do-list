@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/forbid-prop-types */
 import React, { useEffect, useState } from "react";
@@ -16,7 +17,6 @@ export default function TaskRender({ tasks, taskSearch }) {
   const taskBody = document.querySelector(".taskBody");
   const finish = document.querySelector(".finish");
   const methods = ["create", "read", "update", "search", "delete"];
-  // const count = 0;
 
   function Clean() {
     setUrlid(0);
@@ -99,9 +99,9 @@ export default function TaskRender({ tasks, taskSearch }) {
     <TRContainer>
       <TaskRenderView>
         {tasks !== ""
-          ? tasks.map((alldata) => {
+          ? tasks.map((alldata, i) => {
               return (
-                <div className="mainDataDiv">
+                <div key={i} className="mainDataDiv">
                   <button
                     type="button"
                     className="finish"
@@ -122,9 +122,9 @@ export default function TaskRender({ tasks, taskSearch }) {
                 </div>
               );
             })
-          : taskSearch.map((alldata) => {
+          : taskSearch.map((alldata, i) => {
               return (
-                <div className="mainDataDiv">
+                <div key={i} className="mainDataDiv">
                   <button
                     type="button"
                     className="finish"
