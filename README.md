@@ -10,7 +10,21 @@ Há também a funcionalidade de exibir as tarefas concluídas em outra página e
 ### Finalizado ✔️
 
 ## Funcionamento
+<img src="https://github.com/LucasNasc3000/to-do-list/blob/master/images/tdl-home.PNG" width=820 heigth=820/>
+<p font=12>Home/Tarefas pendentes</p>
+<br><br>
 
+<img src="https://github.com/LucasNasc3000/to-do-list/blob/master/images/tdl-pesquisa.PNG" width=820 heigth=820/>
+<p font=12>Pesquisa entre as tarefas pendentes</p>
+<br><br>
+
+<img src="https://github.com/LucasNasc3000/to-do-list/blob/master/images/tdl-tarefas-concluidas.PNG" width=820 heigth=820/>
+<p font=12>Tarefas concluídas</p>
+<br><br>
+
+<img src="https://github.com/LucasNasc3000/to-do-list/blob/master/images/tdl-pesquisa-tarefas-concluidas.PNG" width=820 heigth=820/>
+<p font=12>Pesquisa entre as tarefas concluídas</p>
+<br><br>
 
 ## Tecnologias usadas
 - React js
