@@ -109,7 +109,11 @@ export default function TaskRender({ tasks, taskSearch }) {
                       FinishCreate(e, alldata.idtask, alldata.task)
                     }
                   >
-                    <FaCheckCircle size={30} />
+                    <FaCheckCircle
+                      size={40}
+                      color="green"
+                      className="checkIcon"
+                    />
                   </button>
                   <div className="taskBody">{alldata.task}</div>
                   <button type="button" className="edit">
@@ -132,7 +136,11 @@ export default function TaskRender({ tasks, taskSearch }) {
                       FinishCreate(e, alldata.idtask, alldata.task)
                     }
                   >
-                    <FaCheckCircle size={30} />
+                    <FaCheckCircle
+                      size={40}
+                      color="green"
+                      className="checkIcon"
+                    />
                   </button>
                   <div className="taskBody">{alldata.task}</div>
                   <button type="button" className="edit">

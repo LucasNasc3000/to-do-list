@@ -35,7 +35,7 @@ export const TaskRenderView = styled.div`
     border-radius: 4px;
     top: 10px;
     margin-bottom: 20px;
-    right: 460px;
+    right: 490px;
     padding: 8px;
     position: relative;
   }
@@ -54,14 +54,19 @@ export const TaskRenderView = styled.div`
     top: 15px;
     justify-content: left;
     margin-bottom: 20px;
-    right: -70px;
+    right: -60px;
   }
 
   .finish {
     display: flex;
     height: 50px;
-    width: 80px;
-    background-color: green;
+    width: 50px;
+    margin-top: 5px;
+    padding: 4px;
     color: black;
+  }
+
+  .checkIcon:hover {
+    filter: brightness(75%);
   }
 `;

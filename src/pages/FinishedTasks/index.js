@@ -141,8 +141,6 @@ export default function FinishedTasks() {
     Clean();
   }
 
-  console.log(searchResult);
-
   return (
     <Container>
       <SearchBar>
