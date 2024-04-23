@@ -35,7 +35,7 @@ export const TaskRenderView = styled.div`
     border-radius: 4px;
     top: 10px;
     margin-bottom: 20px;
-    right: 490px;
+    right: 500px;
     padding: 8px;
     position: relative;
   }
